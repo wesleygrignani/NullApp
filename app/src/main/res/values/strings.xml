@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">nullAPP</string>
+    <string name="label_comprar">Compras</string>
+    <string name="label_vender">Vendas</string>
+    <string name="vender">Vender</string>
+    <string name="todo">TODO</string>
+    <string name="comprar">Comprar</string>
+    <string name="textview">TextView</string>
+</resources>
