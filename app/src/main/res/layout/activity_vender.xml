@@ -55,14 +55,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Salvar" />
+            android:text="Salvar"
+            android:onClick="salvarCliente"/>
 
         <Button
-            android:id="@+id/btn_excluir"
+            android:id="@+id/btn_atualizar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Excluir" />
+            android:text="Atualizar"
+            android:onClick="listarClientes"/>
     </LinearLayout>
 
     <ListView

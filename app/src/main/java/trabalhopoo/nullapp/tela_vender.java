@@ -4,16 +4,25 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class tela_vender extends AppCompatActivity {
 
     EditText editCodigo,editNome,editEmail,editTelefone;
     ListView listViewClientes;
+
+    BancoDados db = new BancoDados(this);
+
+    ArrayAdapter<String> adapter;
+    ArrayList<String> arrayList;
+
 
     @Override
 
@@ -29,33 +38,39 @@ public class tela_vender extends AppCompatActivity {
 
         listViewClientes = (ListView)findViewById(R.id.listview_clientes);
 
+
     }
 
-    /*
-    public void salvarInformacoes(View view){
 
-//        Produto p = new Produto();
-//
-//        ArrayList<Produto> lista = new ArrayList<>();
-//
-//
-//        EditText e1 = (EditText) findViewById(R.id.text_nome);
-//        p.setNome(e1.getText().toString());
-//
-//        e1 = (EditText) findViewById(R.id.text_preco);
-//        p.setPreco_unitario(Float.valueOf(e1.getText().toString()));
-//
-//        e1 = (EditText) findViewById(R.id.text_quantidade);
-//        p.setQuantidade(Integer.valueOf(e1.getText().toString()));
-//
-//        e1 = (EditText) findViewById(R.id.text_descricao);
-//        p.setDescricao(e1.getText().toString());
-//
-//
-//        TextView e2 = (TextView) findViewById(R.id.textView);
-//        e2.setText(p.getNome() +  Float.toString(p.getPreco_unitario()));
+    public void salvarCliente(View view){
 
-    }*/
+        Cliente aux = new Cliente();
+
+        aux.setNome(editNome.getText().toString());
+        aux.setEmail(editEmail.getText().toString());
+        aux.setTelefone(editTelefone.getText().toString());
+
+        db.addCliente(aux);
+
+        Toast.makeText(tela_vender.this,"Cliente Adicionado",Toast.LENGTH_LONG).show();
+
+    }
+
+    public void listarClientes(View view){
+
+        List<Cliente> clientes = db.listaTodosClientes();
+
+        arrayList = new ArrayList<String>();
+
+        adapter = new ArrayAdapter<String>(tela_vender.this,android.R.layout.simple_list_item_1,arrayList);
+
+        listViewClientes.setAdapter(adapter);
+
+        for(Cliente c : clientes){
+            arrayList.add(c.getCodigo() + "-" + c.getNome());
+            adapter.notifyDataSetChanged();
+        }
 
 
+    }
 }

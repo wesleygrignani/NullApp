@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //classe para fazer a conexao com o banco de dados SQLite
 public class BancoDados extends SQLiteOpenHelper {
 
@@ -83,8 +86,34 @@ public class BancoDados extends SQLiteOpenHelper {
         cliente1.setEmail(cursor.getString(3));
 
         return cliente1;
+    }
+
+    public List<Cliente> listaTodosClientes(){
+
+        List<Cliente> listaClientes = new ArrayList<Cliente>();
+        String query = "SELECT * FROM " + TABELA_CLIENTE;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(query,null);
+
+        if(c.moveToFirst()){
+            do{
+
+                Cliente cliente = new Cliente();
+                cliente.setCodigo(Integer.parseInt(c.getString(0)));
+                cliente.setNome(c.getString(1));
+                cliente.setTelefone(c.getString(2));
+                cliente.setEmail(c.getString(3));
+
+                listaClientes.add(cliente);
 
 
+            }while(c.moveToNext());
+
+        }
+
+
+        return listaClientes;
     }
 
 }
