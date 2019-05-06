@@ -6,4 +6,11 @@
     <string name="todo">TODO</string>
     <string name="comprar">Comprar</string>
     <string name="textview">TextView</string>
+    <string name="nome">Nome</string>
+    <string name="cpf">CPF</string>
+    <string name="telefone">Telefone</string>
+    <string name="email">e-mail</string>
+    <string name="senha">Senha</string>
+    <string name="confirmasenha">Confirmação da Senha</string>
+    <string name="label_cadastracliente">Cadastrar</string>
 </resources>
