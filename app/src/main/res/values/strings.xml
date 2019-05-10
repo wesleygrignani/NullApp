@@ -13,4 +13,5 @@
     <string name="senha">Senha</string>
     <string name="confirmasenha">Confirmação da Senha</string>
     <string name="label_cadastracliente">Cadastrar</string>
+    <string name="login">  Login  </string>
 </resources>
