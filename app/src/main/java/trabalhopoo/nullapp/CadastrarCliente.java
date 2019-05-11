@@ -15,6 +15,9 @@ import Utility.ExpressaoRegular;
  */
 
 public class CadastrarCliente extends AppCompatActivity {
+
+    BancoDados db = new BancoDados(this);
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstaceState) {
         super.onCreate(savedInstaceState);
@@ -57,6 +60,7 @@ public class CadastrarCliente extends AppCompatActivity {
                             if(Verifica.verificaEmail(email) == true){ // E-mail
                                 if(Verifica.verificaSenha(Senha)== true && Senha.equals(ConfirmaSenha) == true){ // senha e confirma senha
                                     //VINCULAR COM O BANCO-------------------------------------------------------------------------------------------------------
+                                    db.addCliente(user);
                                     Alerta("Você foi cadastrado com sucesso!");
                                     finish();
                                 }else{  //Senha

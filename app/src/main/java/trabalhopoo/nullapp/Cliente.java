@@ -7,10 +7,7 @@ public class Cliente {
     private int codigo;
     private String telefone;
     private String cpf;
-    private  String senha;
-
-
-
+    private String senha;
 
 
     public String getNome() {

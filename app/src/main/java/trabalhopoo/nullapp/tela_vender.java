@@ -37,8 +37,6 @@ public class tela_vender extends AppCompatActivity {
         editTelefone = (EditText)findViewById(R.id.edit_telefone);
 
         listViewClientes = (ListView)findViewById(R.id.listview_clientes);
-
-
     }
 
 
@@ -58,7 +56,9 @@ public class tela_vender extends AppCompatActivity {
 
     public void listarClientes(View view){
 
-        List<Cliente> clientes = db.listaTodosClientes();
+        ClienteLogado clientes = db.listaTodosClientesLogados();
+
+        Cliente y = db.selecionarCLiente(clientes.getCpf());
 
         arrayList = new ArrayList<String>();
 
@@ -66,10 +66,8 @@ public class tela_vender extends AppCompatActivity {
 
         listViewClientes.setAdapter(adapter);
 
-        for(Cliente c : clientes){
-            arrayList.add(c.getCodigo() + "-" + c.getNome());
-            adapter.notifyDataSetChanged();
-        }
+        arrayList.add(y.getCpf() + "-" + y.getNome());
+        adapter.notifyDataSetChanged();
 
 
     }
