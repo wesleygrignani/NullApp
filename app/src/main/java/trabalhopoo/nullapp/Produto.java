@@ -4,7 +4,7 @@ public class Produto {
 
     String nome;
     int quantidade;
-    float preco_unitario;
+    int preco_unitario;
     String descricao;
 
     public Produto(String nome, String descricao) {
@@ -28,11 +28,11 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public float getPreco_unitario() {
+    public int getPreco_unitario() {
         return preco_unitario;
     }
 
-    public void setPreco_unitario(float preco_unitario) {
+    public void setPreco_unitario(int preco_unitario) {
         this.preco_unitario = preco_unitario;
     }
 
