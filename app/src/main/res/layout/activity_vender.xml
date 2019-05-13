@@ -14,95 +14,88 @@
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
         android:layout_marginTop="32dp"
-        android:layout_marginBottom="56dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="201dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="56dp"
-        android:text="Nome do produto"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/etCpf8"
-        app:layout_constraintTop_toBottomOf="@+id/imageV" />
 
     <EditText
         android:id="@+id/etCpf6"
         android:layout_width="345dp"
         android:layout_height="53dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="336dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
         android:ems="10"
+        android:hint="Preco Unt"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etCpf7"
         android:layout_width="345dp"
         android:layout_height="53dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="272dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
         android:ems="10"
+        android:hint="Quantidade"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etCpf8"
         android:layout_width="345dp"
         android:layout_height="53dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="208dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
         android:ems="10"
+        android:hint="Nome do Produto"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="201dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="21dp"
-        android:text="Quantidade"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/etCpf7"
-        app:layout_constraintTop_toBottomOf="@+id/etCpf8" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="201dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="35dp"
-        android:text="Preço Unt"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/etCpf6"
-        app:layout_constraintTop_toBottomOf="@+id/etCpf7" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="105dp"
+        android:layout_height="48dp"
         android:layout_marginStart="154dp"
         android:layout_marginLeft="154dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="412dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginRight="152dp"
         android:text="Cadastrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCpf6" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="165dp"
+        android:layout_height="55dp"
         android:layout_marginStart="29dp"
         android:layout_marginLeft="29dp"
         android:layout_marginTop="80dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginRight="35dp"
         android:onClick="pegaFoto"
-        android:text="Button"
+        android:text="Selecionar Imagem"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageV"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Selecionar Imagem" />

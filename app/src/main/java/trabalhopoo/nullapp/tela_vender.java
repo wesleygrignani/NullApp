@@ -5,9 +5,11 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -20,6 +22,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -59,9 +63,30 @@ public class tela_vender extends AppCompatActivity {
         if(resultCode == Activity.RESULT_OK){
             if(requestCode == 123){
                 Uri imagemSelecionada = data.getData();
+
+                try {
+                    //transformando de uri para bitmap
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imagemSelecionada);
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
+                    byte imagemBytes[] = stream.toByteArray();
+
+                    Produto p = new Produto();
+                    p.setNome("Teste");
+                    p.setQuantidade(1);
+                    p.setDescricao("teste");
+                    p.setPreco_unitario(1500);
+                    p.setCpf("1234567");
+                    p.setFoto(imagemBytes);
+
+                    db.addProduto(p);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
                 ImageView image= findViewById(R.id.imageV);
                 image.setImageURI(imagemSelecionada);
-
             }
         }
     }

@@ -30,6 +30,15 @@ public class BancoDados extends SQLiteOpenHelper {
     private static final String COLUNA_CODLOGADO = "codigo";
     private static final String COLUNA_CPFLOGADO  = "cpf";
 
+    //TABELA PRODUTO
+    private static final String TABELA_PRODUTO = "produtos";
+    private static final String COLUNA_CODPRODUTO = "codigo";
+    private static final String COLUNA_NOMEPRODUTO = "nome";
+    private static final String COLUNA_PRECO = "preco";
+    private static final String COLUNA_QUANTIDADE = "quantidade";
+    private static final String COLUNA_DESCRICAO = "descricao";
+    private static final String COLUNA_CPFPRODUTO = "cpf";
+    private static final String COLUNA_FOTO = "foto";
 
 
     public BancoDados(Context context) {
@@ -45,8 +54,12 @@ public class BancoDados extends SQLiteOpenHelper {
 
         String QUERY_2 = "CREATE TABLE " + TABELA_LOGADO + "(" + COLUNA_CODLOGADO + " INTEGER PRIMARY KEY, " + COLUNA_CPFLOGADO + " TEXT)";
 
+        String QUERY_3 = "CREATE TABLE " + TABELA_PRODUTO + "(" + COLUNA_CODPRODUTO + " INTEGER PRIMARY KEY, " + COLUNA_NOMEPRODUTO + " TEXT, " + COLUNA_PRECO
+                + " INTEGER , " + COLUNA_QUANTIDADE + " INTEGER, " + COLUNA_DESCRICAO + " TEXT, " + COLUNA_CPFPRODUTO + " TEXT, " + COLUNA_FOTO + " BLOB)";
+
         db.execSQL(QUERY_1);
         db.execSQL(QUERY_2);
+        db.execSQL(QUERY_3);
     }
 
     @Override
@@ -78,6 +91,7 @@ public class BancoDados extends SQLiteOpenHelper {
 
     }
 
+    //selecionar cliente no banco de dados pelo cpf
     Cliente selecionarCLiente(String codigo){
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -166,10 +180,43 @@ public class BancoDados extends SQLiteOpenHelper {
         return h;
     }
 
-    /*
+    void addProduto(Produto produto){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUNA_NOMEPRODUTO,produto.getNome());
+        values.put(COLUNA_PRECO,produto.getPreco_unitario());
+        values.put(COLUNA_QUANTIDADE,produto.getQuantidade());
+        values.put(COLUNA_DESCRICAO,produto.getDescricao());
+        values.put(COLUNA_CPFPRODUTO,produto.getCpf());
+        values.put(COLUNA_FOTO,produto.getFoto());
+        db.insert(TABELA_PRODUTO,null,values);
+        db.close();
+    }
+
+
+    public List<Produto> listaTodosProdutos(){
+        List<Produto> listaProdutos = new ArrayList<Produto>();
+        String query = "SELECT * FROM " + TABELA_PRODUTO;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(query,null);
+        if(c.moveToFirst()){
+            do{
+                Produto produto = new Produto();
+                produto.setCodigo(Integer.parseInt(c.getString(0)));
+                produto.setNome(c.getString(1));
+                produto.setPreco_unitario(Integer.parseInt(c.getString(2)));
+                produto.setQuantidade(Integer.parseInt(c.getString(3)));
+                produto.setDescricao(c.getString(4));
+                produto.setCpf(c.getString(5));
+                listaProdutos.add(produto);
+            }while(c.moveToNext());
+        }
+        return listaProdutos;
+    }
+
 
     private String[] toArgs(Cliente aluno) {
-        String[] args = {String.valueOf(aluno.getCodigo())};
+        String[] args = {Integer.toString(aluno.getCodigo())};
         return args;
     }
 
@@ -184,10 +231,36 @@ public class BancoDados extends SQLiteOpenHelper {
         return values;
     }
 
+    //alterar clientes dentro do banco de dados
     public void alterar(Cliente cliente) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = toValues(cliente);
-        db.update("tb_clientes", values, "id=?", toArgs(cliente));
-    }*/
+        db.update("tb_clientes", values, "codigo = ?", toArgs(cliente));
+    }
+
+
+    Produto selecionarProduto(int codigo){
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABELA_PRODUTO, new String[] {COLUNA_CODPRODUTO,COLUNA_NOMEPRODUTO,COLUNA_PRECO,COLUNA_QUANTIDADE,COLUNA_DESCRICAO,COLUNA_CPFPRODUTO,COLUNA_FOTO},COLUNA_CODPRODUTO + " = ?",
+                new String[] {String.valueOf(codigo)},null,null,null,null);
+
+        if(cursor != null){
+            cursor.moveToFirst();
+        }
+
+        Produto produto = new Produto();
+
+        produto.setCodigo(Integer.parseInt(cursor.getString(0)));
+        produto.setNome(cursor.getString(1));
+        produto.setPreco_unitario(Integer.parseInt(cursor.getString(2)));
+        produto.setQuantidade(Integer.parseInt(cursor.getString(3)));
+        produto.setDescricao(cursor.getString(4));
+        produto.setCpf(cursor.getString(5));
+        produto.setFoto(cursor.getBlob(6));
+
+        return produto;
+    }
 
 }

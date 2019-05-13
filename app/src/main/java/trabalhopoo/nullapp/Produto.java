@@ -2,14 +2,37 @@ package trabalhopoo.nullapp;
 
 public class Produto {
 
-    String nome;
-    int quantidade;
-    int preco_unitario;
-    String descricao;
+    private int codigo;
+    private String nome;
+    private int quantidade;
+    private int preco_unitario;
+    private String descricao;
+    private String Cpf;
+    private byte[] foto;
 
-    public Produto(String nome, String descricao) {
-        this.nome = nome;
-        this.descricao = descricao;
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
+    public String getCpf() {
+        return Cpf;
+    }
+
+    public void setCpf(String cpf) {
+        Cpf = cpf;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getNome() {
