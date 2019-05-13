@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,6 @@ public class BancoDados extends SQLiteOpenHelper {
     private static final String COLUNA_NOMEPRODUTO = "nome";
     private static final String COLUNA_PRECO = "preco";
     private static final String COLUNA_QUANTIDADE = "quantidade";
-    private static final String COLUNA_DESCRICAO = "descricao";
     private static final String COLUNA_CPFPRODUTO = "cpf";
     private static final String COLUNA_FOTO = "foto";
 
@@ -55,7 +55,7 @@ public class BancoDados extends SQLiteOpenHelper {
         String QUERY_2 = "CREATE TABLE " + TABELA_LOGADO + "(" + COLUNA_CODLOGADO + " INTEGER PRIMARY KEY, " + COLUNA_CPFLOGADO + " TEXT)";
 
         String QUERY_3 = "CREATE TABLE " + TABELA_PRODUTO + "(" + COLUNA_CODPRODUTO + " INTEGER PRIMARY KEY, " + COLUNA_NOMEPRODUTO + " TEXT, " + COLUNA_PRECO
-                + " INTEGER , " + COLUNA_QUANTIDADE + " INTEGER, " + COLUNA_DESCRICAO + " TEXT, " + COLUNA_CPFPRODUTO + " TEXT, " + COLUNA_FOTO + " BLOB)";
+                + " INTEGER , " + COLUNA_QUANTIDADE + " INTEGER, " + COLUNA_CPFPRODUTO + " TEXT, " + COLUNA_FOTO + " BLOB)";
 
         db.execSQL(QUERY_1);
         db.execSQL(QUERY_2);
@@ -186,7 +186,6 @@ public class BancoDados extends SQLiteOpenHelper {
         values.put(COLUNA_NOMEPRODUTO,produto.getNome());
         values.put(COLUNA_PRECO,produto.getPreco_unitario());
         values.put(COLUNA_QUANTIDADE,produto.getQuantidade());
-        values.put(COLUNA_DESCRICAO,produto.getDescricao());
         values.put(COLUNA_CPFPRODUTO,produto.getCpf());
         values.put(COLUNA_FOTO,produto.getFoto());
         db.insert(TABELA_PRODUTO,null,values);
@@ -194,8 +193,8 @@ public class BancoDados extends SQLiteOpenHelper {
     }
 
 
-    public List<Produto> listaTodosProdutos(){
-        List<Produto> listaProdutos = new ArrayList<Produto>();
+    public ArrayList<Produto> listaTodosProdutos(){
+        ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
         String query = "SELECT * FROM " + TABELA_PRODUTO;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = db.rawQuery(query,null);
@@ -206,8 +205,8 @@ public class BancoDados extends SQLiteOpenHelper {
                 produto.setNome(c.getString(1));
                 produto.setPreco_unitario(Integer.parseInt(c.getString(2)));
                 produto.setQuantidade(Integer.parseInt(c.getString(3)));
-                produto.setDescricao(c.getString(4));
-                produto.setCpf(c.getString(5));
+                produto.setCpf(c.getString(4));
+                produto.setFoto(c.getBlob(5));
                 listaProdutos.add(produto);
             }while(c.moveToNext());
         }
@@ -243,7 +242,7 @@ public class BancoDados extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABELA_PRODUTO, new String[] {COLUNA_CODPRODUTO,COLUNA_NOMEPRODUTO,COLUNA_PRECO,COLUNA_QUANTIDADE,COLUNA_DESCRICAO,COLUNA_CPFPRODUTO,COLUNA_FOTO},COLUNA_CODPRODUTO + " = ?",
+        Cursor cursor = db.query(TABELA_PRODUTO, new String[] {COLUNA_CODPRODUTO,COLUNA_NOMEPRODUTO,COLUNA_PRECO,COLUNA_QUANTIDADE,COLUNA_CPFPRODUTO,COLUNA_FOTO},COLUNA_CODPRODUTO + " = ?",
                 new String[] {String.valueOf(codigo)},null,null,null,null);
 
         if(cursor != null){
@@ -256,9 +255,8 @@ public class BancoDados extends SQLiteOpenHelper {
         produto.setNome(cursor.getString(1));
         produto.setPreco_unitario(Integer.parseInt(cursor.getString(2)));
         produto.setQuantidade(Integer.parseInt(cursor.getString(3)));
-        produto.setDescricao(cursor.getString(4));
-        produto.setCpf(cursor.getString(5));
-        produto.setFoto(cursor.getBlob(6));
+        produto.setCpf(cursor.getString(4));
+        produto.setFoto(cursor.getBlob(5));
 
         return produto;
     }

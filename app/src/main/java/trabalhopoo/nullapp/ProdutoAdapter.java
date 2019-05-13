@@ -1,6 +1,8 @@
 package trabalhopoo.nullapp;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import trabalhopoo.nullapp.Produto;
 import trabalhopoo.nullapp.R;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 public class ProdutoAdapter extends ArrayAdapter<Produto> {
@@ -28,13 +31,18 @@ public class ProdutoAdapter extends ArrayAdapter<Produto> {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.linhalistview, parent, false);
-        TextView nomeProduto = (TextView) rowView.findViewById(R.id.textproduto);
-        TextView descricaoProduto = (TextView) rowView.findViewById(R.id.textvendedor1);
-        ImageView imagem = (ImageView) rowView.findViewById(R.id.image1);
+        TextView nomeProduto = (TextView) rowView.findViewById(R.id.nomeproduto);
+        TextView qntProduto = (TextView) rowView.findViewById(R.id.qntproduto);
+        TextView precoProduto = (TextView) rowView.findViewById(R.id.precoproduto);
+        ImageView imagem = (ImageView) rowView.findViewById(R.id.imagelist);
 
         nomeProduto.setText(elementos.get(position).getNome());
-        descricaoProduto.setText(elementos.get(position).getDescricao());
-//        imagem.setImageResource(elementos.get(position).getImagem());
+        qntProduto.setText(String.valueOf(elementos.get(position).getQuantidade()));
+        precoProduto.setText(String.valueOf(elementos.get(position).getPreco_unitario()));
+        byte[] image = elementos.get(position).getFoto();
+        ByteArrayInputStream imageStream = new ByteArrayInputStream(image);
+        Bitmap imageBitmap = BitmapFactory.decodeStream(imageStream);
+        imagem.setImageBitmap(imageBitmap);
         return rowView;
     }
 }

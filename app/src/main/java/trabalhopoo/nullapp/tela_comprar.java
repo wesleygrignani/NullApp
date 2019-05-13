@@ -11,6 +11,7 @@ import android.widget.ListView;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 public class tela_comprar extends AppCompatActivity {
 
@@ -20,41 +21,29 @@ public class tela_comprar extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstaceState){
         super.onCreate(savedInstaceState);
         setContentView(R.layout.activity_comprar);
-        ImageView imagem = findViewById(R.id.imageVieww);
 
-        Produto p = db.selecionarProduto(1);
+        ArrayList<Produto> produto = db.listaTodosProdutos();
 
-        byte[] image = p.getFoto();
-        ByteArrayInputStream imageStream = new ByteArrayInputStream(image);
-        Bitmap imageBitmap = BitmapFactory.decodeStream(imageStream);
 
-        imagem.setImageBitmap(imageBitmap);
-
-        /*
-        ListView lista = (ListView) findViewById(R.id.lvProduto);
-        ArrayAdapter adapter = new ProdutoAdapter(this, adicionarProduto());
-        lista.setAdapter(adapter);*/
+       ListView lista = (ListView) findViewById(R.id.list);
+        ArrayAdapter adapter = new ProdutoAdapter(this, produto);
+        lista.setAdapter(adapter);
     }
 
 
 
-    /*
-    private ArrayList<Produto> adicionarProduto() {
-        ArrayList<Produto> produtos = new ArrayList<Produto>();
-        Produto e = new Produto("Escravo",
-                "mae do Stofella");
-                produtos.add(e);
-        e = new Produto("Meu cu",
-                "Ta sujo");
-        produtos.add(e);
-        e = new Produto("sem ideia irmao",
-                "meu dls");
-        produtos.add(e);
-        e = new Produto("aff",
-                "tem mais ainda");
-        produtos.add(e);
-        return produtos;
-    }*/
+//    private ArrayList<Produto> adicionarProduto() {
+//        ArrayList<Produto> produtos = new ArrayList<Produto>();
+//        Produto e = new Produto("Escravo",
+//                2, 4);
+//                produtos.add(e);
+//        e = new Produto("mae do stofella",
+//                2, 4);
+//        produtos.add(e);
+//
+//        return produtos;
+//    }
+
 
 
 }

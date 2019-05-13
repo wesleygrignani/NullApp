@@ -29,11 +29,11 @@ import java.util.ArrayList;
 
 public class tela_vender extends AppCompatActivity {
 
-
+    private Uri imagemSelecionada;
     private static final int REQUEST_CODE_PERMISSION = 123;
 
-    EditText editCodigo,editNome,editEmail,editTelefone;
-    ListView listViewClientes;
+    EditText editNome,editQnt,editPreco;
+
 
     BancoDados db = new BancoDados(this);
 
@@ -41,13 +41,16 @@ public class tela_vender extends AppCompatActivity {
     ArrayList<String> arrayList;
 
 
+
     @Override
 
     protected void onCreate(@Nullable Bundle savedInstaceState){
 
-
         super.onCreate(savedInstaceState);
         setContentView(R.layout.activity_vender);
+        editNome = findViewById(R.id.NomeProduto);
+        editQnt = findViewById(R.id.Qnt);
+        editPreco = findViewById(R.id.Preco);
 
     }
 
@@ -62,28 +65,9 @@ public class tela_vender extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == Activity.RESULT_OK){
             if(requestCode == 123){
-                Uri imagemSelecionada = data.getData();
+                imagemSelecionada = data.getData();
 
-                try {
-                    //transformando de uri para bitmap
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imagemSelecionada);
-                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
-                    byte imagemBytes[] = stream.toByteArray();
 
-                    Produto p = new Produto();
-                    p.setNome("Teste");
-                    p.setQuantidade(1);
-                    p.setDescricao("teste");
-                    p.setPreco_unitario(1500);
-                    p.setCpf("1234567");
-                    p.setFoto(imagemBytes);
-
-                    db.addProduto(p);
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
 
                 ImageView image= findViewById(R.id.imageV);
                 image.setImageURI(imagemSelecionada);
@@ -91,39 +75,22 @@ public class tela_vender extends AppCompatActivity {
         }
     }
 
-/*
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case REQUEST_CODE_PERMISSION:
-                if(grantResults[0] ==  PackageManager.PERMISSION_GRANTED){
+    public void cadastrar(View v){
+        try {
+            //transformando de uri para bitmap
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imagemSelecionada);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
+            byte imagemBytes[] = stream.toByteArray();
 
-                    //fazer o necessário
-                }else if(grantResults[0] == PackageManager.PERMISSION_DENIED){
+            Produto p = new Produto(editNome.getText().toString(), Integer.parseInt(editQnt.getText().toString()),  Integer.parseInt(editPreco.getText().toString()),"12345678911" , imagemBytes);
+            db.addProduto(p);
 
-                }
-
-                if(grantResults[1] ==  PackageManager.PERMISSION_GRANTED){
-                    Log.i("CAMERA PERMISSION", "GRANTED");
-
-                }else if(grantResults[1] == PackageManager.PERMISSION_DENIED){
-
-                }
-
-                break;
-            default:
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
-    private void requestPermissions(){
-        String[] perms = { Manifest.permission.READ_CONTACTS , Manifest.permission.CAMERA};
-        int hasReadSMSPermission = checkSelfPermission(Manifest.permission.READ_CONTACTS);
-        if(hasReadSMSPermission != PackageManager.PERMISSION_GRANTED){
-            requestPermissions(perms, REQUEST_CODE_PERMISSION);
-            return;
-        }
 
-    }*/
 }
