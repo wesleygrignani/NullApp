@@ -260,5 +260,27 @@ public class BancoDados extends SQLiteOpenHelper {
 
         return produto;
     }
+    private String[] tooArgs(Produto produto) {
+        String[] args = {Integer.toString(produto.getCodigo())};
+        return args;
+    }
+
+
+    private ContentValues tooValues(Produto produto) {
+        ContentValues values = new ContentValues();
+        values.put("nome", produto.getNome());
+        values.put("preco", produto.getPreco_unitario());
+        values.put("quantidade", produto.getQuantidade());
+        values.put("cpf", produto.getCpf());
+        values.put("foto",produto.getFoto());
+        return values;
+    }
+
+    //alterar clientes dentro do banco de dados
+    public void alterarProduto(Produto produto) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = tooValues(produto);
+        db.update("produtos", values, "codigo = ?", tooArgs(produto));
+    }
 
 }

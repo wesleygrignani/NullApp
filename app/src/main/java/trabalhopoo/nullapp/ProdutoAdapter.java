@@ -24,6 +24,7 @@ public class ProdutoAdapter extends ArrayAdapter<Produto> {
         super(context, R.layout.linhalistview, elementos);
         this.context=context;
         this.elementos = elementos;
+
     }
 
     @Override
