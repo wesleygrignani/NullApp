@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="411dp"
-        android:layout_height="731dp"
+        android:layout_width="408dp"
+        android:layout_height="735dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,111 +18,74 @@
 
     <ScrollView
         android:id="@+id/scrollView3"
-        android:layout_width="0dp"
-        android:layout_height="331dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_width="400dp"
+        android:layout_height="470dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="274dp">
 
-        <LinearLayout
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="470dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="274dp">
+
+        <EditText
+            android:id="@+id/etnome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:ems="10"
+            android:hint="@string/nome"
+            android:inputType="textPersonName" />
 
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/nome"
-                android:textSize="18sp" />
+        <EditText
+            android:id="@+id/etcpf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/cpf"
+            android:inputType="number" />
 
-            <EditText
-                android:id="@+id/etnome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/ettelefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/telefone"
+            android:inputType="phone" />
 
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/cpf"
-                android:textSize="18sp" />
+        <EditText
+            android:id="@+id/etemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/etcpf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/etsenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/senha"
+            android:inputType="textPassword" />
 
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/telefone"
-                android:textSize="18sp" />
+        <EditText
+            android:id="@+id/etconfirmasenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/confirmasenha"
+            android:inputType="textPassword" />
 
-            <EditText
-                android:id="@+id/ettelefone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
+        <Button
+            android:id="@+id/BCadastrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_cadastracliente"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/email"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/etemail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
-
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/senha"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/etsenha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword" />
-
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/confirmasenha"
-                android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/etconfirmasenha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPassword" />
-
-            <Button
-                android:id="@+id/BCadastrar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/label_cadastracliente" />
-
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
