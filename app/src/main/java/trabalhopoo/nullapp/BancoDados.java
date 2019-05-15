@@ -260,12 +260,14 @@ public class BancoDados extends SQLiteOpenHelper {
 
         return produto;
     }
+
+    //retornar codigo do produto
     private String[] tooArgs(Produto produto) {
         String[] args = {Integer.toString(produto.getCodigo())};
         return args;
     }
 
-
+    //retornar o conteudo do produto
     private ContentValues tooValues(Produto produto) {
         ContentValues values = new ContentValues();
         values.put("nome", produto.getNome());
@@ -276,11 +278,43 @@ public class BancoDados extends SQLiteOpenHelper {
         return values;
     }
 
-    //alterar clientes dentro do banco de dados
+    //alterar produto dentro do banco
     public void alterarProduto(Produto produto) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = tooValues(produto);
         db.update("produtos", values, "codigo = ?", tooArgs(produto));
     }
+
+
+    //excluir produto do banco
+    public void deletarProduto(Produto produto) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = tooValues(produto);
+        db.delete("produtos","codigo = ?",tooArgs(produto));
+    }
+
+    public ArrayList<Produto> listarProdutosdoUsuario(String cpf){
+        ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
+        String query = "SELECT * FROM " + TABELA_PRODUTO;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(query,null);
+        if(c.moveToFirst()){
+            do{
+                Produto produto = new Produto();
+                produto.setCodigo(Integer.parseInt(c.getString(0)));
+                produto.setNome(c.getString(1));
+                produto.setPreco_unitario(Integer.parseInt(c.getString(2)));
+                produto.setQuantidade(Integer.parseInt(c.getString(3)));
+                produto.setCpf(c.getString(4));
+                produto.setFoto(c.getBlob(5));
+                if(cpf.equals(c.getString(4))){
+                    listaProdutos.add(produto);
+                }
+            }while(c.moveToNext());
+        }
+        return listaProdutos;
+    }
+
+
 
 }

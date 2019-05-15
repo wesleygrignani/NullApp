@@ -29,7 +29,7 @@ public class tela_login extends AppCompatActivity {
 
         etcpf = (EditText) findViewById(R.id.etCpf);
         etsenha = (EditText) findViewById(R.id.etSenha);
-
+        
     }
 
     public void abrirCadastraCliente(View view){

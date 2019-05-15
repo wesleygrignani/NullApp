@@ -83,13 +83,19 @@ public class tela_vender extends AppCompatActivity {
             bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
             byte imagemBytes[] = stream.toByteArray();
 
-            Produto p = new Produto(editNome.getText().toString(), Integer.parseInt(editQnt.getText().toString()),  Integer.parseInt(editPreco.getText().toString()),"12345678911" , imagemBytes);
+            ClienteLogado t = db.listaTodosClientesLogados();
+
+            Produto p = new Produto(editNome.getText().toString(), Integer.parseInt(editQnt.getText().toString()),  Integer.parseInt(editPreco.getText().toString()),t.getCpf() , imagemBytes);
             db.addProduto(p);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+    }
+
+    public void editarProdutos(View view){
+        startActivity(new Intent(getBaseContext(),tela_editar_produtos.class));
     }
 
 
