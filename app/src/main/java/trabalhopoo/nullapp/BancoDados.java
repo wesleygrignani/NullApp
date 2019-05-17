@@ -46,6 +46,7 @@ public class BancoDados extends SQLiteOpenHelper {
         super(context, BANCO_CLIENTE,null, VERSAO_BANCO);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         String QUERY_1 = "CREATE TABLE " + TABELA_CLIENTE + "("

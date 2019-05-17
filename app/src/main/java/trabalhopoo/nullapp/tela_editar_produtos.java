@@ -1,7 +1,6 @@
 package trabalhopoo.nullapp;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -25,8 +24,8 @@ public class tela_editar_produtos extends AppCompatActivity {
 
         ArrayList<Produto> produtos = db.listarProdutosdoUsuario(p.getCpf());
 
-        ListView lista = (ListView) findViewById(R.id.list2);
-        ArrayAdapter adapter = new ProdutoAdapter(this, produtos);
+        ListView lista = (ListView) findViewById(R.id.list);
+        ArrayAdapter adapter = new ProdutoAdapter(this, produtos, p);
         lista.setAdapter(adapter);
     }
 }

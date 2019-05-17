@@ -24,26 +24,11 @@ public class tela_comprar extends AppCompatActivity {
 
         ArrayList<Produto> produto = db.listaTodosProdutos();
 
+        ClienteLogado p = db.listaTodosClientesLogados();
 
        ListView lista = (ListView) findViewById(R.id.list);
-        ArrayAdapter adapter = new ProdutoAdapter(this, produto);
+        ArrayAdapter adapter = new ProdutoAdapter(this, produto, p);
         lista.setAdapter(adapter);
     }
-
-
-
-//    private ArrayList<Produto> adicionarProduto() {
-//        ArrayList<Produto> produtos = new ArrayList<Produto>();
-//        Produto e = new Produto("Escravo",
-//                2, 4);
-//                produtos.add(e);
-//        e = new Produto("mae do stofella",
-//                2, 4);
-//        produtos.add(e);
-//
-//        return produtos;
-//    }
-
-
 
 }
