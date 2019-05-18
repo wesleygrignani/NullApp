@@ -15,4 +15,8 @@
     <string name="label_cadastracliente">Cadastrar</string>
     <string name="login">  Login  </string>
     <string name="title_activity_editar_produtos">editarProdutos</string>
+    <string name="nomecartao">  Nome do Cartão  </string>
+    <string name="datacartao">  Data ( MM/AA )  </string>
+    <string name="codigocartao">  Código do Cartão  </string>
+    <string name="numerocartao">  nº Cartão  </string>
 </resources>

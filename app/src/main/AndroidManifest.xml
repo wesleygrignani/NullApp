@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/iconeapp"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -27,6 +27,9 @@
         <activity
             android:name=".tela_editar_produtos"
             android:label="Editar Produtos" />
+        <activity
+            android:name=".CadastraCartao"
+            android:label="@string/telefone"/>
         <activity
             android:name=".tela_login"
             android:label="@string/app_name"

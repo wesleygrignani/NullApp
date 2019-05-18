@@ -20,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 import java.io.ByteArrayOutputStream;
@@ -87,7 +88,8 @@ public class tela_vender extends AppCompatActivity {
 
             Produto p = new Produto(editNome.getText().toString(), Integer.parseInt(editQnt.getText().toString()),  Integer.parseInt(editPreco.getText().toString()),t.getCpf() , imagemBytes);
             db.addProduto(p);
-
+            Toast.makeText(this,"Produto foi cadastado com sucesso",Toast.LENGTH_LONG).show();
+            finish();
         } catch (IOException e) {
             e.printStackTrace();
         }

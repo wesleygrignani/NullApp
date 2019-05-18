@@ -25,4 +25,8 @@ public class MainActivity extends AppCompatActivity {
     public void abrirTelaCompras(View view){
         startActivity(new Intent(getBaseContext(),tela_comprar.class));
     }
+
+    public void abriTelaTeste(View view){
+        startActivity(new Intent(getBaseContext(),CadastraCartao.class));
+    }
 }

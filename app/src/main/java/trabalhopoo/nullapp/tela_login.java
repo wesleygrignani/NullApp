@@ -48,6 +48,7 @@ public class tela_login extends AppCompatActivity {
                 h.setCpf(c.getCpf());
                 db.addClienteLogado(h);
                 startActivity(new Intent(getBaseContext(),MainActivity.class));
+                Toast.makeText(this,"Logado com sucesso!",Toast.LENGTH_LONG).show();
             }
         }
 

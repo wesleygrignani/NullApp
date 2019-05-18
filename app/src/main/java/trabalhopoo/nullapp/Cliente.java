@@ -9,7 +9,6 @@ public class Cliente {
     private String cpf;
     private String senha;
 
-
     public String getNome() {
         return nome;
     }
@@ -65,4 +64,5 @@ public class Cliente {
         this.email = email;
         this.senha = senha;
     }
+
 }

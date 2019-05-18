@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="81dp">
+    android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="408dp"
-        android:layout_height="735dp"
+        android:id="@+id/imageView"
+        android:layout_width="411dp"
+        android:layout_height="731dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,8 +17,8 @@
         app:srcCompat="@drawable/p" />
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="228dp"
         android:layout_marginTop="274dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,52 +30,36 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/etnome"
+                android:id="@+id/etnomecartao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/nome"
+                android:hint="@string/nomecartao"
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/etcpf"
+                android:id="@+id/etnumerocartao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/cpf"
+                android:hint="@string/numerocartao"
                 android:inputType="number" />
 
             <EditText
-                android:id="@+id/ettelefone"
+                android:id="@+id/etdatacartao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/telefone"
-                android:inputType="phone" />
+                android:hint="@string/datacartao"
+                android:inputType="date" />
 
             <EditText
-                android:id="@+id/etemail"
+                android:id="@+id/etcodigocartao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/email"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/etsenha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/senha"
-                android:inputType="textPassword" />
-
-            <EditText
-                android:id="@+id/etconfirmasenha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/confirmasenha"
-                android:inputType="textPassword" />
+                android:hint="@string/codigocartao"
+                android:inputType="number" />
 
             <Button
                 android:id="@+id/BCadastrar"
@@ -85,17 +69,5 @@
                 android:textSize="18sp" />
         </LinearLayout>
     </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="470dp"
-        android:layout_marginTop="274dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
