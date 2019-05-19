@@ -22,4 +22,10 @@
     <string name="codigocartao">  Código do Cartão  </string>
     <string name="numerocartao">  nº Cartão  </string>
     <string name="finalizarcompra"> Finalizar Compra </string>
+    <string name="confirmarproduto">  Confirmar Produto  </string>
+    <string name="excluirproduto">  Excluir Produto  </string>
+    <string name="nomeproduto">  Nome do Produto  </string>
+    <string name="quantidade">  Quantidade  </string>
+    <string name="precoproduto">  Preço do Produto  </string>
+
 </resources>
