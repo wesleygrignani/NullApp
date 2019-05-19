@@ -53,14 +53,18 @@ public class tela_login extends AppCompatActivity {
         String cpf = etcpf.getText().toString();
         String senha = etsenha.getText().toString();
 
-        for (Cliente c : clientes){
-            if(cpf.equals(c.getCpf()) && senha.equals(c.getSenha())){
-                ClienteLogado h = new ClienteLogado();
-                h.setCpf(c.getCpf());
-                db.addClienteLogado(h);
-                startActivity(new Intent(getBaseContext(),MainActivity.class));
-                Toast.makeText(this,"Logado com sucesso!",Toast.LENGTH_LONG).show();
+
+            for (Cliente c : clientes) {
+                if (cpf.equals(c.getCpf()) && senha.equals(c.getSenha())) {
+                    ClienteLogado h = new ClienteLogado();
+                    h.setCpf(c.getCpf());
+                    db.addClienteLogado(h);
+                    startActivity(new Intent(getBaseContext(), MainActivity.class));
+                    etcpf.setText("");
+                    etsenha.setText("");
+                    Toast.makeText(this, "Logado com sucesso!", Toast.LENGTH_LONG).show();
+                }
             }
-        }
+
     }
 }

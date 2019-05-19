@@ -14,12 +14,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/p" />
+        app:srcCompat="@drawable/tela_null" />
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="228dp"
-        android:layout_marginTop="274dp"
+        android:layout_marginTop="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -65,29 +65,19 @@
                 android:id="@+id/BCadastrar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Continuar"
-                android:textSize="18sp" />
+                android:text="@string/finalizarcompra"
+                android:textSize="24sp" />
         </LinearLayout>
     </ScrollView>
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="236dp"
-        android:text="Valor Total R$:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/Texto_Valor"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
+        android:layout_width="286dp"
+        android:layout_height="21dp"
         android:layout_marginStart="108dp"
         android:layout_marginLeft="108dp"
-        android:layout_marginTop="236dp"
+        android:layout_marginTop="250dp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

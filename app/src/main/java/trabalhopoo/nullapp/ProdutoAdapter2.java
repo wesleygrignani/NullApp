@@ -55,7 +55,7 @@ public class ProdutoAdapter2 extends ArrayAdapter<Produto> {
 
         nomeVendedor.setText(t.getNome());
         nomeProduto.setText(elementos.get(position).getNome());
-        precoProduto.setText(String.valueOf(elementos.get(position).getPreco_unitario()));
+        precoProduto.setText("Preço R$ " + String.valueOf(elementos.get(position).getPreco_unitario()));
         byte[] image = elementos.get(position).getFoto();
         ByteArrayInputStream imageStream = new ByteArrayInputStream(image);
         Bitmap imageBitmap = BitmapFactory.decodeStream(imageStream);

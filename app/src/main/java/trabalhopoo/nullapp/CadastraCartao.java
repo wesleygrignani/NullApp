@@ -34,7 +34,7 @@ public class CadastraCartao  extends AppCompatActivity {
             soma+=p.getPreco_unitario();
         }
 
-        t.setText(String.valueOf(soma));
+        t.setText("Valor Total R$ " + String.valueOf(soma));
 
         BtCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,19 +68,19 @@ public class CadastraCartao  extends AppCompatActivity {
                                 finish();
                             }else{
                                 etcodigocartao.setText("");
-                                Alerta("Codigo do Cartão Invalido! \n\t Deve ter 3 digitos!");
+                                Alerta("Codigo do Cartão Invalido! \n\t\t Deve ter 3 digitos!");
                             }
                         }else{
                             etdatacartao.setText("");
-                            Alerta("Data do Cartão Invalida! \n\t Ex: ( MM/AA )");
+                            Alerta("Data do Cartão Invalida! \n\t\t Ex: ( MM/AA )");
                         }
                     }else{
                         etnumerocartao.setText("");
-                        Alerta("O numero do Cartão é Invalido! \n\t Deve ter 16 digitos!");
+                        Alerta("O numero do Cartão é Invalido! \n\t\t Deve ter 16 digitos!");
                     }
                 }else{
                     etnomecartao.setText("");
-                    Alerta("Nome Invalido! \n\t Deve ter no minimo 3 letras!");
+                    Alerta("\t\tNome Invalido! \n\t Deve ter no minimo 3 letras!");
                 }
             }
         });

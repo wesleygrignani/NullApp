@@ -16,14 +16,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/p" />
+        app:srcCompat="@drawable/telaprincipal" />
 
     <Button
         android:id="@+id/button"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="368dp"
+        android:layout_marginTop="381dp"
         android:onClick="abrirTelaVendas"
         android:text="@string/vender"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -37,7 +37,7 @@
         style="@style/Widget.AppCompat.Button"
         android:layout_width="88dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="312dp"
+        android:layout_marginTop="325dp"
         android:onClick="abrirTelaCompras"
         android:text="@string/comprar"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginLeft="160dp"
-        android:layout_marginTop="424dp"
+        android:layout_marginTop="437dp"
         android:onClick="EditarProdutos"
         android:text="@string/label_editar"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
         android:layout_marginLeft="160dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="55dp"
         android:onClick="ComprarProdutos"
         android:text="@string/label_sacola"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"

@@ -21,4 +21,5 @@
     <string name="datacartao">  Data ( MM/AA )  </string>
     <string name="codigocartao">  Código do Cartão  </string>
     <string name="numerocartao">  nº Cartão  </string>
+    <string name="finalizarcompra"> Finalizar Compra </string>
 </resources>
