@@ -27,8 +27,8 @@ public class tela_comprar extends AppCompatActivity {
         ClienteLogado p = db.listaTodosClientesLogados();
 
        ListView lista = (ListView) findViewById(R.id.list);
-        ArrayAdapter adapter = new ProdutoAdapter(this, produto, p);
-        lista.setAdapter(adapter);
+       ArrayAdapter adapter = new ProdutoAdapter(this, produto, p);
+       lista.setAdapter(adapter);
     }
 
 }

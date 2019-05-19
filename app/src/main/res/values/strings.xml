@@ -2,6 +2,8 @@
     <string name="app_name">nullAPP</string>
     <string name="label_comprar">Compras</string>
     <string name="label_vender">Vendas</string>
+    <string name="label_editar">Editar</string>
+    <string name="label_sacola">Sacola</string>
     <string name="vender">Vender</string>
     <string name="todo">TODO</string>
     <string name="comprar">Comprar</string>
@@ -12,7 +14,7 @@
     <string name="email">e-mail</string>
     <string name="senha">Senha</string>
     <string name="confirmasenha">Confirmação da Senha</string>
-    <string name="label_cadastracliente">Cadastrar</string>
+    <string name="label_cadastracliente">Cadastro</string>
     <string name="login">  Login  </string>
     <string name="title_activity_editar_produtos">editarProdutos</string>
     <string name="nomecartao">  Nome do Cartão  </string>

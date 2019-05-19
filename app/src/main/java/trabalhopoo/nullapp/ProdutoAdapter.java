@@ -1,8 +1,13 @@
 package trabalhopoo.nullapp;
 
+import trabalhopoo.nullapp.tela_login;
+
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +21,15 @@ import android.widget.Toast;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
+
 public class ProdutoAdapter extends ArrayAdapter<Produto> {
+
+    BancoDados db = new BancoDados(getContext());
+
     private final Context context;
     private ArrayList<Produto>elementos;
 
-
     ClienteLogado p;
-
 
     public ProdutoAdapter(Context context, ArrayList<Produto> elementos, ClienteLogado h){
         super(context, R.layout.linhalistview, elementos);
@@ -45,8 +52,13 @@ public class ProdutoAdapter extends ArrayAdapter<Produto> {
             butao.setText("Editar");
             butao.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v){ // Retorno do click Editar na listview
+                public void onClick(View v) { // Retorno do click Editar na listview
+                    testeProduto t = new testeProduto();
+                    t.setCodigo(200);
+                    t.setNome(elementos.get(position).getNome());
+                    db.addProdutoEditar(t);
 
+                    Toast.makeText(getContext(),"Volte ao menu para edita-lo",Toast.LENGTH_LONG).show();
                 }
             });
         }else {
@@ -54,6 +66,20 @@ public class ProdutoAdapter extends ArrayAdapter<Produto> {
                 @Override
                 public void onClick(View v){ // Retorno do click Comprar na listview
 
+                    db.addProdutoSacola(elementos.get(position).getCodigo(),elementos.get(position).getNome(),elementos.get(position).getPreco_unitario(),
+                            elementos.get(position).getQuantidade(),elementos.get(position).getCpf(),elementos.get(position).getFoto());
+
+                    Toast.makeText(getContext(),"Adicionado a Sacola",Toast.LENGTH_LONG).show();
+
+                    Produto p = db.selecionarProduto(elementos.get(position).getNome());
+
+                    p.setQuantidade(p.getQuantidade()-1);
+
+                    if(p.getQuantidade()==0){
+                        db.deletarProduto(p);
+                    }else{
+                        db.alterarProduto(p);
+                    }
                 }
             });
         }
@@ -68,4 +94,7 @@ public class ProdutoAdapter extends ArrayAdapter<Produto> {
         imagem.setImageBitmap(imageBitmap);
         return rowView;
     }
+
 }
+
+

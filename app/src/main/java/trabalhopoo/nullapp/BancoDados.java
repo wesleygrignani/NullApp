@@ -40,9 +40,24 @@ public class BancoDados extends SQLiteOpenHelper {
     private static final String COLUNA_CPFPRODUTO = "cpf";
     private static final String COLUNA_FOTO = "foto";
 
+    //TABELA AUXILAR PARA EDITAR PRODUTO
+    private static final String TABELA_EDITAR_PRODUTO = "produto";
+    private static final String COLUNA_CODIGO_PRODUTO = "codigo";
+    private static final String COLUNA_NOME_PRODUTO = "nome";
+
+    //TABELA AUXILAR PARA COMPRAR PRODUTO
+    private static final String TABELA_SACOLA_PRODUTO = "sacola";
+    private static final String COLUNA_CODIGO_PRODUTO_SACOLA = "codigo";
+    private static final String COLUNA_NOME_PRODUTO_SACOLA = "nome";
+    private static final String COLUNA_PRECO_SACOLA = "preco";
+    private static final String COLUNA_QUANTIDADE_SACOLA = "quantidade";
+    private static final String COLUNA_CPFPRODUTO_SACOLA = "cpf";
+    private static final String COLUNA_FOTO_SACOLA = "foto";
+
+
+
 
     public BancoDados(Context context) {
-
         super(context, BANCO_CLIENTE,null, VERSAO_BANCO);
     }
 
@@ -58,9 +73,18 @@ public class BancoDados extends SQLiteOpenHelper {
         String QUERY_3 = "CREATE TABLE " + TABELA_PRODUTO + "(" + COLUNA_CODPRODUTO + " INTEGER PRIMARY KEY, " + COLUNA_NOMEPRODUTO + " TEXT, " + COLUNA_PRECO
                 + " INTEGER , " + COLUNA_QUANTIDADE + " INTEGER, " + COLUNA_CPFPRODUTO + " TEXT, " + COLUNA_FOTO + " BLOB)";
 
+        String QUERY_4 = "CREATE TABLE " + TABELA_EDITAR_PRODUTO + "(" + COLUNA_CODIGO_PRODUTO + " INTEGER, " + COLUNA_NOME_PRODUTO + " TEXT)";
+
+        String QUERY_5 = "CREATE TABLE " + TABELA_SACOLA_PRODUTO + "(" + COLUNA_CODIGO_PRODUTO_SACOLA + " INTEGER, " + COLUNA_NOME_PRODUTO_SACOLA + " TEXT, " + COLUNA_PRECO_SACOLA
+                + " INTEGER , " + COLUNA_QUANTIDADE_SACOLA + " INTEGER, " + COLUNA_CPFPRODUTO_SACOLA + " TEXT, " + COLUNA_FOTO_SACOLA + " BLOB)";
+
+
         db.execSQL(QUERY_1);
         db.execSQL(QUERY_2);
         db.execSQL(QUERY_3);
+        db.execSQL(QUERY_4);
+        db.execSQL(QUERY_5);
+
     }
 
     @Override
@@ -98,7 +122,7 @@ public class BancoDados extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABELA_CLIENTE, new String[] {COLUNA_CODIGO,COLUNA_NOME,COLUNA_TELEFONE,COLUNA_EMAIL,COLUNA_CPF,COLUNA_SENHA},COLUNA_CPF + " = ?",
-                new String[] {String.valueOf(codigo)},null,null,null,null);
+                new String[] {codigo},null,null,null,null);
 
         if(cursor != null){
             cursor.moveToFirst();
@@ -239,11 +263,11 @@ public class BancoDados extends SQLiteOpenHelper {
     }
 
 
-    Produto selecionarProduto(int codigo){
+    Produto selecionarProduto(String codigo){
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(TABELA_PRODUTO, new String[] {COLUNA_CODPRODUTO,COLUNA_NOMEPRODUTO,COLUNA_PRECO,COLUNA_QUANTIDADE,COLUNA_CPFPRODUTO,COLUNA_FOTO},COLUNA_CODPRODUTO + " = ?",
+        Cursor cursor = db.query(TABELA_PRODUTO, new String[] {COLUNA_CODPRODUTO,COLUNA_NOMEPRODUTO,COLUNA_PRECO,COLUNA_QUANTIDADE,COLUNA_CPFPRODUTO,COLUNA_FOTO},COLUNA_NOMEPRODUTO + " = ?",
                 new String[] {String.valueOf(codigo)},null,null,null,null);
 
         if(cursor != null){
@@ -316,6 +340,96 @@ public class BancoDados extends SQLiteOpenHelper {
         return listaProdutos;
     }
 
+    void addProdutoEditar(testeProduto produto){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUNA_CODIGO_PRODUTO,produto.getCodigo());
+        values.put(COLUNA_NOME_PRODUTO,produto.getNome());
+        db.insert(TABELA_EDITAR_PRODUTO,null,values);
+        db.close();
+    }
 
+    public testeProduto listaTodosProdutosEditaveis(){
+
+        testeProduto h = new testeProduto();
+        String query = "SELECT * FROM " + TABELA_EDITAR_PRODUTO;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(query,null);
+
+        if(c.moveToFirst()){
+            do{
+
+                testeProduto produto = new testeProduto();
+                produto.setCodigo(Integer.parseInt(c.getString(0)));
+                produto.setNome(c.getString(1));
+                h = produto;
+            }while(c.moveToNext());
+
+        }
+        return h;
+    }
+
+    private ContentValues Values(testeProduto produto) {
+        ContentValues values = new ContentValues();
+        values.put("nome", produto.getNome());
+        return values;
+    }
+
+
+    private String[] Args(testeProduto produto) {
+        String[] args = {Integer.toString(produto.getCodigo())};
+        return args;
+    }
+
+    public void deletarProdutoEditar(testeProduto produto) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = Values(produto);
+        db.delete("produto","codigo = ?",Args(produto));
+    }
+
+    void addProdutoSacola(int codigo, String nome,int preco,int quantidade,String cpf,byte[] foto){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUNA_CODIGO_PRODUTO_SACOLA,codigo);
+        values.put(COLUNA_NOME_PRODUTO_SACOLA,nome);
+        values.put(COLUNA_PRECO_SACOLA,preco);
+        values.put(COLUNA_QUANTIDADE_SACOLA,quantidade);
+        values.put(COLUNA_CPFPRODUTO_SACOLA,cpf);
+        values.put(COLUNA_FOTO_SACOLA,foto);
+
+        db.insert(TABELA_SACOLA_PRODUTO,null,values);
+
+        db.close();
+    }
+
+    public ArrayList<Produto> listaTodosProdutosSacola(){
+        ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
+        String query = "SELECT * FROM " + TABELA_SACOLA_PRODUTO;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(query,null);
+        if(c.moveToFirst()){
+            do{
+                Produto p = new Produto();
+                p.setCodigo(Integer.parseInt(c.getString(0)));
+                p.setNome((c.getString(1)));
+                p.setPreco_unitario(Integer.parseInt(c.getString(2)));
+                p.setQuantidade(Integer.parseInt(c.getString(3)));
+                p.setCpf((c.getString(4)));
+                p.setFoto((c.getBlob(5)));
+
+                listaProdutos.add(p);
+
+            }while(c.moveToNext());
+        }
+        return listaProdutos;
+    }
+
+    public void receberComandoSQL(String sql){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(sql);
+        db.close();
+    }
 
 }

@@ -25,11 +25,20 @@
             android:name=".CadastrarCliente"
             android:label="@string/label_cadastracliente" />
         <activity
+            android:name=".tela_editar"
+            android:label="@string/label_editar" />
+        <activity
             android:name=".tela_editar_produtos"
             android:label="Editar Produtos" />
         <activity
+            android:name=".visualizarSacola"
+            android:label="Visualizar Sacola" />
+        <activity
+            android:name=".sacolaCompras"
+            android:label="Sacola" />
+        <activity
             android:name=".CadastraCartao"
-            android:label="@string/telefone"/>
+            android:label="Cartao"/>
         <activity
             android:name=".tela_login"
             android:label="@string/app_name"

@@ -29,4 +29,12 @@ public class MainActivity extends AppCompatActivity {
     public void abriTelaTeste(View view){
         startActivity(new Intent(getBaseContext(),CadastraCartao.class));
     }
+
+    public void EditarProdutos(View view){
+        startActivity(new Intent(getBaseContext(),tela_editar.class));
+    }
+
+    public void ComprarProdutos(View view){
+        startActivity(new Intent(getBaseContext(),sacolaCompras.class));
+    }
 }
