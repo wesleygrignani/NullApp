@@ -3,98 +3,107 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="81dp">
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="411dp"
-        android:layout_height="731dp"
+        android:layout_width="384dp"
+        android:layout_height="511dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/tela_padrao" />
-
-    <ImageView
-        android:id="@+id/imageViewt"
-        android:layout_width="269dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="237dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_confirmar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@android:drawable/btn_dialog" />
 
     <EditText
         android:id="@+id/edit_text_nome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginLeft="96dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginBottom="11dp"
         android:ems="10"
         android:hint="@string/nomeproduto"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/edit_text_qnt"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewt" />
 
     <EditText
         android:id="@+id/edit_text_qnt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginLeft="96dp"
-        android:layout_marginTop="296dp"
+        android:layout_marginBottom="13dp"
         android:ems="10"
         android:hint="@string/quantidade"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/edit_text_preco"
+        app:layout_constraintStart_toStartOf="@+id/edit_text_nome"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_nome" />
 
     <EditText
         android:id="@+id/edit_text_preco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginLeft="96dp"
-        android:layout_marginTop="356dp"
+        android:layout_marginBottom="11dp"
         android:ems="10"
         android:hint="@string/precoproduto"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/btn_confirmar"
+        app:layout_constraintStart_toStartOf="@+id/edit_text_qnt"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_qnt" />
 
     <Button
         android:id="@+id/btn_confirmar"
         android:layout_width="172dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginRight="18dp"
-        android:layout_marginBottom="250dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="13dp"
         android:onClick="ConfirmarEdicao"
         android:text="@string/confirmarproduto"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/edit_text_preco"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewt" />
+        app:layout_constraintBottom_toTopOf="@+id/button8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_preco" /><![CDATA[
+
+    =======
+    android:layout_width="170dp"
+    android:layout_height="42dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="444dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginRight="8dp"
+    android:onClick="ConfirmarEdicao"
+    android:text="Confirmar Edicao"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.464"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+    ]]>
 
     <Button
         android:id="@+id/button8"
-        android:layout_width="147dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="34dp"
+        android:layout_width="170dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="41dp"
         android:onClick="excluirProduto"
-        android:text="@string/excluirproduto"
+        android:text="Excluir Produto"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_confirmar" />
+
+    <ImageView
+        android:id="@+id/imageViewt"
+        android:layout_width="167dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/edit_text_nome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/btn_dialog" />
 
 </android.support.constraint.ConstraintLayout>
