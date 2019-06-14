@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".endereco">
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="411dp"
+        android:layout_height="731dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/tela_padrao" />
+
+    <EditText
+        android:id="@+id/bairro"
+        android:layout_width="215dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="184dp"
+        android:ems="10"
+        android:hint="Bairro"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/logradouro"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/uf"
+        android:layout_width="345dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="404dp"
+        android:ems="10"
+        android:hint="Estado"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/localidade"
+        app:layout_constraintStart_toStartOf="@+id/localidade"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/localidade"
+        android:layout_width="345dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="328dp"
+        android:ems="10"
+        android:hint="Cidade"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/complemento"
+        app:layout_constraintStart_toStartOf="@+id/complemento"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/complemento"
+        android:layout_width="345dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="256dp"
+        android:ems="10"
+        android:hint="Complemento"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/bairro"
+        app:layout_constraintStart_toStartOf="@+id/numero"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/numero"
+        android:layout_width="117dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="184dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:ems="10"
+        android:hint="Nº"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/bairro"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/logradouro"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/logradouro"
+        android:layout_width="345dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="112dp"
+        android:ems="10"
+        android:hint="Logradouro"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView11"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageView11"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/cep"
+        android:layout_width="218dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="33dp"
+        android:ems="10"
+        android:hint="CEP"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/logradouro"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button6"
+        style="@android:style/Widget.DeviceDefault.Button.Borderless"
+        android:layout_width="105dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="648dp"
+        android:layout_marginEnd="152dp"
+        android:text="Cadastrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Buscar"
+        android:layout_width="95dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginBottom="24dp"
+        android:onClick="buscarCEP"
+        android:text="Buscar"
+        app:layout_constraintBottom_toTopOf="@+id/logradouro"
+        app:layout_constraintStart_toEndOf="@+id/cep" />
+
+</android.support.constraint.ConstraintLayout>

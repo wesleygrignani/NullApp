@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".endereco"></activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
             android:value="true" />
 
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".tela_comprar"
             android:label="@string/label_comprar" />
@@ -38,7 +39,7 @@
             android:label="Sacola" />
         <activity
             android:name=".CadastraCartao"
-            android:label="Cartao"/>
+            android:label="Cartao" />
         <activity
             android:name=".tela_login"
             android:label="@string/app_name"
