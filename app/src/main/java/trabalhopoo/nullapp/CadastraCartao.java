@@ -62,9 +62,7 @@ public class CadastraCartao  extends AppCompatActivity {
                         if(VerificaS.verificaDataCartao(DataCartao) == true){
                             if(VerificaS.verificaCodCartao(CodCartao) == true){
                                 //VINCULAR COM O BANCO-------------------------------------------------------------------------------------------------------
-
-                                Alerta("Compra realizada com sucesso!");
-                                startActivity(new Intent(getBaseContext(),MainActivity.class));
+                                startActivity(new Intent(getBaseContext(),endereco.class));
                                 finish();
                             }else{
                                 etcodigocartao.setText("");

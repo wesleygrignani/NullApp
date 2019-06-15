@@ -1,10 +1,12 @@
 package trabalhopoo.nullapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -16,12 +18,15 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 
 
 public class endereco extends AppCompatActivity {
 
    private EditText etCep,etlogradouro, etnumero, etbairro, etcomplemento, etcidade, etuf;
    private String Cep,logradouro,numero,bairro, complemento, cidade, uf;
+
+   BancoDados db = new BancoDados(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +77,39 @@ public class endereco extends AppCompatActivity {
                 }
         );
         requestQueue.add(objectRequest);
-
     }
+
+    public void cadastrarEndereco(View view){
+
+        Endereco endereco = new Endereco();
+
+        endereco.setCep(etCep.getText().toString());
+        endereco.setBairro(etbairro.getText().toString());
+        endereco.setCidade(etcidade.getText().toString());
+        endereco.setEtuf(etuf.getText().toString());
+        endereco.setLogradouro(etlogradouro.getText().toString());
+        endereco.setComplemento(etcomplemento.getText().toString());
+
+        ClienteLogado clienteLogado = db.listaTodosClientesLogados();
+
+        endereco.setCpf(clienteLogado.getCpf());
+
+        db.addEndereco(endereco);
+
+        Toast.makeText(endereco.this,"Compra Finalizada !!",Toast.LENGTH_LONG).show();
+
+        arrumarSacola(view);
+    }
+
+    public void arrumarSacola(View v){
+        ArrayList<Produto> produtos = db.listaTodosProdutosSacola();
+
+        for(Produto t : produtos){
+            db.deletarProdutoSacola(t);
+        }
+
+        startActivity(new Intent(getBaseContext(), MainActivity.class));
+        finish();
+    }
+
 }

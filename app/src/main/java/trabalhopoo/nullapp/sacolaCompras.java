@@ -50,4 +50,36 @@ public class sacolaCompras extends AppCompatActivity {
     public void finalizarCompra(View view){
         startActivity(new Intent(getBaseContext(),CadastraCartao.class));
     }
+
+    public void limparSacola(View view){
+
+        ArrayList<Produto> produtos = db.listaTodosProdutosSacola();
+
+        ArrayList<Produto> produtosCadatrados = db.listaTodosProdutos();
+
+        for(Produto t : produtos){
+            db.deletarProdutoSacola(t);
+        }
+
+        //funcao top para limpar a sacola e adicionar os produtos
+        for(int i = 0; i<produtos.size(); i++){
+            int count=0;
+            for (int j = 0; j<produtosCadatrados.size(); j++ ){
+                produtosCadatrados = db.listaTodosProdutos();
+                if(produtos.get(i).getCpf().equals(produtosCadatrados.get(j).getCpf()) && produtos.get(i).getNome().equals(produtosCadatrados.get(j).getNome())){
+                    int qntTotal = produtos.get(i).getQuantidade() + produtosCadatrados.get(j).getQuantidade();
+                    produtos.get(i).setQuantidade(qntTotal);
+                    db.alterarProduto(produtos.get(i));
+                }else {
+                    count++;
+                }
+            }
+            if(count==produtosCadatrados.size()){
+                db.addProduto(produtos.get(i));
+            }
+        }
+
+        Toast.makeText(sacolaCompras.this,"Produtos Removidos",Toast.LENGTH_LONG).show();
+        finish();
+    }
 }

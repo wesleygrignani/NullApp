@@ -65,8 +65,9 @@
                 android:id="@+id/BCadastrar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/finalizarcompra"
-                android:textSize="24sp" />
+                android:text="continuar"
+                android:textSize="24sp"
+                />
         </LinearLayout>
     </ScrollView>
 

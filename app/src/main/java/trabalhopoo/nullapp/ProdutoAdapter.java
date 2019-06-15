@@ -67,7 +67,7 @@ public class ProdutoAdapter extends ArrayAdapter<Produto> {
                 public void onClick(View v){ // Retorno do click Comprar na listview
 
                     db.addProdutoSacola(elementos.get(position).getCodigo(),elementos.get(position).getNome(),elementos.get(position).getPreco_unitario(),
-                            elementos.get(position).getQuantidade(),elementos.get(position).getCpf(),elementos.get(position).getFoto());
+                            1,elementos.get(position).getCpf(),elementos.get(position).getFoto());
 
                     Toast.makeText(getContext(),"Adicionado a Sacola",Toast.LENGTH_LONG).show();
 

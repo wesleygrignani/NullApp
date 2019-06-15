@@ -54,6 +54,17 @@ public class BancoDados extends SQLiteOpenHelper {
     private static final String COLUNA_CPFPRODUTO_SACOLA = "cpf";
     private static final String COLUNA_FOTO_SACOLA = "foto";
 
+    //TABELA ENDERECO
+    private static final String TABELA_ENDERECO = "endereco";
+    private static final String COLUNA_CODIGO_ENDERECO = "codigo";
+    private static final String COLUNA_CEP = "cep";
+    private static final String COLUNA_LOGRADOURO = "logradouro";
+    private static final String COLUNA_BAIRRO = "bairro";
+    private static final String COLUNA_COMPLEMENTO = "complemento";
+    private static final String COLUNA_CIDADE = "cidade";
+    private static final String COLUNA_UF = "uf";
+    private static final String COLUNA_CPF_ENDERECO = "cpf";
+
 
 
 
@@ -78,12 +89,16 @@ public class BancoDados extends SQLiteOpenHelper {
         String QUERY_5 = "CREATE TABLE " + TABELA_SACOLA_PRODUTO + "(" + COLUNA_CODIGO_PRODUTO_SACOLA + " INTEGER, " + COLUNA_NOME_PRODUTO_SACOLA + " TEXT, " + COLUNA_PRECO_SACOLA
                 + " INTEGER , " + COLUNA_QUANTIDADE_SACOLA + " INTEGER, " + COLUNA_CPFPRODUTO_SACOLA + " TEXT, " + COLUNA_FOTO_SACOLA + " BLOB)";
 
+        String QUERY_6 = "CREATE TABLE " + TABELA_ENDERECO + "(" + COLUNA_CODIGO_ENDERECO + " INTEGER PRIMARY KEY, " + COLUNA_CEP + " TEXT, " + COLUNA_LOGRADOURO
+                + " TEXT, " + COLUNA_BAIRRO + " TEXT, " + COLUNA_COMPLEMENTO + " TEXT, " + COLUNA_CIDADE + " TEXT, " + COLUNA_UF + " TEXT, " + COLUNA_CPF_ENDERECO + " TEXT)";
+
 
         db.execSQL(QUERY_1);
         db.execSQL(QUERY_2);
         db.execSQL(QUERY_3);
         db.execSQL(QUERY_4);
         db.execSQL(QUERY_5);
+        db.execSQL(QUERY_6);
 
     }
 
@@ -432,4 +447,48 @@ public class BancoDados extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void deletarProdutoSacola(Produto produto) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = tooValues(produto);
+        db.delete("sacola","codigo = ?",tooArgs(produto));
+    }
+
+    void addEndereco(Endereco endereco){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUNA_CEP,endereco.getCep());
+        values.put(COLUNA_LOGRADOURO,endereco.getLogradouro());
+        values.put(COLUNA_BAIRRO,endereco.getBairro());
+        values.put(COLUNA_COMPLEMENTO,endereco.getComplemento());
+        values.put(COLUNA_CIDADE,endereco.getCidade());
+        values.put(COLUNA_UF,endereco.getEtuf());
+        values.put(COLUNA_CPF_ENDERECO,endereco.getCpf());
+
+        db.insert(TABELA_ENDERECO,null,values);
+        db.close();
+    }
+
+    public ArrayList<Endereco> listaTodosEnderecos(){
+        ArrayList<Endereco> listaProdutos = new ArrayList<Endereco>();
+        String query = "SELECT * FROM " + TABELA_ENDERECO;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(query,null);
+        if(c.moveToFirst()){
+            do{
+                Endereco p = new Endereco();
+                p.setCodigo(Integer.parseInt(c.getString(0)));
+                p.setCep((c.getString(1)));
+                p.setLogradouro((c.getString(2)));
+                p.setBairro((c.getString(3)));
+                p.setComplemento((c.getString(4)));
+                p.setCidade((c.getString(5)));
+                p.setEtuf((c.getString(6)));
+                p.setCpf((c.getString(7)));
+                listaProdutos.add(p);
+
+            }while(c.moveToNext());
+        }
+        return listaProdutos;
+    }
 }

@@ -28,6 +28,7 @@ public class tela_login extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstaceState) {
         super.onCreate(savedInstaceState);
         setContentView(R.layout.activity_login);
+        super.onStart();
 
         etcpf = (EditText) findViewById(R.id.etCpf);
         etsenha = (EditText) findViewById(R.id.etSenha);
@@ -49,19 +50,18 @@ public class tela_login extends AppCompatActivity {
         String cpf = etcpf.getText().toString();
         String senha = etsenha.getText().toString();
 
-
             for (Cliente c : clientes) {
                 if (cpf.equals(c.getCpf()) && senha.equals(c.getSenha())) {
                     ClienteLogado h = new ClienteLogado();
                     h.setCpf(c.getCpf());
                     db.addClienteLogado(h);
+                    super.onPause();
                     startActivity(new Intent(getBaseContext(), MainActivity.class));
                     etcpf.setText("");
                     etsenha.setText("");
                     Toast.makeText(this, "Logado com sucesso!", Toast.LENGTH_LONG).show();
                 }
             }
-
     }
     public void test(View view){
         startActivity(new Intent(getBaseContext(),endereco.class));
