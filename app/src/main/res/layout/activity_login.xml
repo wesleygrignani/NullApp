@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:onClick="abrirCadastraCliente"
         android:text="@string/label_cadastracliente"
+        android:textAllCaps="false"
         android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="parent"
