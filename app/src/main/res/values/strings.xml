@@ -15,7 +15,7 @@
     <string name="senha">Senha</string>
     <string name="confirmasenha">Confirmação da Senha</string>
     <string name="label_cadastracliente">Cadastro</string>
-    <string name="login">  Login  </string>
+    <string name="login">Login</string>
     <string name="title_activity_editar_produtos">editarProdutos</string>
     <string name="nomecartao">  Nome do Cartão  </string>
     <string name="datacartao">  Data ( MM/AA )  </string>

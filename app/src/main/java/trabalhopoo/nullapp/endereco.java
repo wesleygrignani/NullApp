@@ -38,6 +38,7 @@ public class endereco extends AppCompatActivity {
     public void buscarCEP (View view){
 
         etCep = (EditText) findViewById(R.id.cep);
+        etnumero = (EditText) findViewById(R.id.numero);
         etlogradouro = (EditText) findViewById(R.id.logradouro);
         etbairro = (EditText) findViewById(R.id.bairro);
         etcomplemento = (EditText) findViewById(R.id.complemento);
@@ -81,24 +82,31 @@ public class endereco extends AppCompatActivity {
 
     public void cadastrarEndereco(View view){
 
-        Endereco endereco = new Endereco();
+        if(etnumero.getText().toString()==" "){
+            Toast.makeText(endereco.this,"Informe o numero !!",Toast.LENGTH_LONG).show();
 
-        endereco.setCep(etCep.getText().toString());
-        endereco.setBairro(etbairro.getText().toString());
-        endereco.setCidade(etcidade.getText().toString());
-        endereco.setEtuf(etuf.getText().toString());
-        endereco.setLogradouro(etlogradouro.getText().toString());
-        endereco.setComplemento(etcomplemento.getText().toString());
+        }else {
 
-        ClienteLogado clienteLogado = db.listaTodosClientesLogados();
 
-        endereco.setCpf(clienteLogado.getCpf());
+            Endereco endereco = new Endereco();
 
-        db.addEndereco(endereco);
+            endereco.setCep(etCep.getText().toString());
+            endereco.setBairro(etbairro.getText().toString());
+            endereco.setCidade(etcidade.getText().toString());
+            endereco.setEtuf(etuf.getText().toString());
+            endereco.setLogradouro(etlogradouro.getText().toString());
+            endereco.setComplemento(etcomplemento.getText().toString());
 
-        Toast.makeText(endereco.this,"Compra Finalizada !!",Toast.LENGTH_LONG).show();
+            ClienteLogado clienteLogado = db.listaTodosClientesLogados();
 
-        arrumarSacola(view);
+            endereco.setCpf(clienteLogado.getCpf());
+
+            db.addEndereco(endereco);
+
+            Toast.makeText(endereco.this, "Compra Finalizada !!", Toast.LENGTH_LONG).show();
+
+            arrumarSacola(view);
+        }
     }
 
     public void arrumarSacola(View v){

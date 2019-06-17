@@ -80,6 +80,7 @@ public class ProdutoAdapter extends ArrayAdapter<Produto> {
                     }else{
                         db.alterarProduto(p);
                     }
+
                 }
             });
         }

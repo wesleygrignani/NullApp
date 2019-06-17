@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="abrirCadastraCliente"
-        android:text="@string/label_cadastracliente"
+        android:text="CADASTRAR"
         android:textAllCaps="false"
         android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/button4"
@@ -67,17 +67,5 @@
         android:inputType="phone"
         app:layout_constraintBottom_toTopOf="@+id/etSenha"
         app:layout_constraintStart_toStartOf="@+id/etSenha" />
-
-    <Button
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:onClick="test"
-        android:text="Test"
-        app:layout_constraintEnd_toStartOf="@+id/imageView5"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
 
 </android.support.constraint.ConstraintLayout>
